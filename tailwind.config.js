@@ -1,3 +1,6 @@
 export default {
-  content: ['./**/*.jsx']
+  content: [
+    "./**/*.html",
+    "./src/**/*.jsx"
+  ]
 }

@@ -2,6 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Plus Jakarta Sans';
+  src: url('/assets/fonts/PlusJakartaSans-VariableFont_wght.ttf');
+}
+
+:root {
+  /* primary colors */
+  --primary-color-lime: hsl(61, 70%, 52%);
+  --primary-color-red: hsl(4, 69%, 50%);
+
+  /* color netruals*/
+  --white: hsl(0, 0%, 100%);
+  --slate-100: hsl(202, 86%, 94%);
+  --slate-300: hsl(203, 41%, 72%);
+  --slate-500: hsl(200, 26%, 54%);
+  --slate-700: hsl(200, 24%, 40%);
+  --slate-900: hsl(202, 55%, 16%);
+
+  /* Typography */
+  --font-name: 'Plus Jakarta Sans';
+  --font-body-size: 1rem;
+  
+  --font-w-500: 500;
+  --font-w-700: 700;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--white);
+  font-family: var(--font-name);
+}
+
 input {
   border: 1px solid black;
 }
@@ -9,4 +44,12 @@ button {
   border-radius: .4rem;
   background-color: #272783;
   color: white;
+}
+
+.amountVisual {
+  /* position: absolute; */
+  padding: 20px;
+  color: white;
+  z-index: 1;
+  background-color: red;
 }

@@ -1,80 +1,207 @@
-import { useState } from 'react'
+import { useRef, useState } from "react";
+import { validate } from "./utils/validations";
+import { calculateMortgage } from "./utils/calculateMortgage";
 
-function MortgageCalculator () {
+const intialData = {
+  amount: 0,
+  years: 0,
+  rate: 0,
+  resultMonthy: 0,
+  resultTotal: 0,
+}
 
-  const [messageError, setMessageError] = useState(false)
+function MortgageCalculator() {
+
+  const [value, setValue] = useState("")
+  const [formatterValue, setFormatterValue] = useState("");
+
+  /* state of message */
+  const [messageError, setMessageError] = useState({
+    errorAmount: false,
+    errorYears: false,
+    errorRate: false,
+    errorCategorie: false,
+  });
+
+  /* option select */
+  const [categorie, setCategorie] = useState("");
+  const [data, setData] = useState(intialData);
+
+  // reference to inputs 
+  const inputRefRate = useRef(null)
+  const inputRefYear = useRef(null)
+
   
-  const [ data, setData ] = useState({
-    amount: 0,
-    years: 0,
-    rate: 0,
-    type: ''
-  })
+  function handleNumeric (e) {
+    const numberValue = e.target.value;
 
-  function handleClickCalulate (event) {
-    event.preventDefault()
-    const target = event.target;
-    const field = new FormData(target)
-
-    const inputsFields = {
-      amount: Number(field.get('amount')),
-      years: Number(field.get('years')),
-      rate: Number(field.get('percent')),
-      type: field.get('categorie'),
-    }
-    console.log(typeof inputsFields.amount)
-    if(typeof inputsFields.amount === 'string' || inputsFields.amount <= 0) {
-      return setMessageError(true)
+    const numberClean = numberValue.replace(/[^0-9]/g, "")
+    setValue(numberClean)
+    
+    if(numberClean) {
+      
+      const formatted = parseInt(numberClean, 10).toLocaleString("en-US")
+      setFormatterValue(formatted)
     }else {
-      setMessageError(false)
+      setFormatterValue("")
+      setValue("")
+    }
+  }
+  
+  function handleClickClearInptus () {
+    // reset form field values
+    setFormatterValue("")
+    setValue("")
+    if(inputRefRate.current || inputRefYear.current) {
+      inputRefRate.current.value = ''
+      inputRefYear.current.value = ''
+    }
+  }
+
+  function handleChangeInterestRate(event) {
+    setCategorie(event.target.value);
+  }
+
+  function handleChangeRepayment(event) {
+    setCategorie(event.target.value);
+  }
+
+  function handleClickCalulate(event) {
+    event.preventDefault();
+    const target = event.target;
+    const field = new FormData(target);
+
+    //get data form
+    const inputsFields = {
+      amount: value,
+      years: Number(field.get("years")),
+      rate: Number(field.get("percent")),
+    };
+    console.log(inputsFields)
+
+    // validation
+    const validationErrors = validate(inputsFields);
+    const isInvalidData = Object.values(validationErrors).some(e => e);
+    if (isInvalidData) {
+      return setMessageError(validationErrors);
     }
 
-    setData({
-      amount: inputsFields.amount,
-      years: inputsFields.years,
-      rate: inputsFields.rate,
-      type: inputsFields.type
-    })
+    // Clean message error of the fields
+    setMessageError({});
+
+    // calculates if you select the "repayment" option
+    if (categorie === "repayment") {
+      const results = calculateMortgage().calculateRepayment(inputsFields.amount, inputsFields.rate,inputsFields.years);
+
+      setData((prev) => {
+        return {
+          ...prev,
+          resultMonthy: Number(results.resultMonthyPayments.toFixed(2)).toLocaleString("en-US"),
+          resultTotal: Number(results.totalPayment.toFixed(2)).toLocaleString("en-US"),
+        };
+      });
+    }
+
+    // calculates if you select the "interest only" option
+    if (categorie === "interest") {
+      const results = calculateMortgage().calculateInterestOnly(inputsFields.amount, inputsFields.rate, inputsFields.years);
+
+      setData(prev => {
+        return {
+          ...prev,
+          resultMonthy: Number(results.resultMonthyPayments.toFixed(2)).toLocaleString("en-US"),
+          resultTotal: Number(results.totalPayment.toFixed(2)).toLocaleString("en-US"),
+        };
+      });
+    }
 
   }
 
   return (
     <>
-      <h1>Mortgage Calculator</h1>
+      <h1 className="text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
+
+      <button onClick={handleClickClearInptus}>Clear All</button>
       <form onSubmit={handleClickCalulate}>
         <div>
-          <label htmlFor='amount'>Mortgage Ammount</label>
-          <input type='number' name='amount' id='amount'/>
+          <label htmlFor="amount">Mortgage Ammount</label>
+          <input type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
         </div>
-        <span className={messageError ? 'display text-red-800' : 'hidden'}>{messageError &&'this field is required'}</span>
+        <span
+          className={
+            messageError.errorAmount ? "display text-red-800" : "hidden"
+          }
+        >
+          {messageError.errorAmount && "this field is required"}
+        </span>
         <div>
           <label htmlFor="years">Years</label>
-          <input type='number' name='years' id='years'/>
+          <input type="number" name="years" id="years" ref={inputRefYear}/>
+          <span
+            className={
+              messageError.errorYears ? "display text-red-800" : "hidden"
+            }
+          >
+            {messageError.errorYears && "this field is required"}
+          </span>
         </div>
         <div>
-          <label htmlFor='percent'>Interest Rate</label>
-          <input type='number' name='percent' id='percent'/>
+          <label htmlFor="percent">Interest Rate</label>
+          <input
+            type="number"
+            name="percent"
+            id="percent"
+            ref={inputRefRate}
+            step={0.01}
+            min={0}
+            max={100}
+          />
+          <span
+            className={
+              messageError.errorRate ? "display text-red-800" : "hidden"
+            }
+          >
+            {messageError.errorRate && "this field is required"}
+          </span>
         </div>
         <div>
-          <label htmlFor='repayment'>Repayment</label>
-          <input type='radio' name='categorie' id='repayment' value={'repayment'} defaultChecked/>
+          <label htmlFor="repayment">Repayment</label>
+          <input
+            type="radio"
+            name="categorie"
+            id="repayment"
+            value="repayment"
+            onChange={handleChangeRepayment}
+          />
         </div>
         <div>
           <label htmlFor="interest">Interest Only</label>
-          <input type='radio' name='categorie' id='interest' value={'interest'}/>
+          <input
+            type="radio"
+            name="categorie"
+            id="interest"
+            value="interest"
+            onChange={handleChangeInterestRate}
+          />
+          <span
+            className={
+              messageError.errorCategorie ? "display text-red-800" : "hidden"
+            }
+          >
+            {messageError.errorCategorie && "this field is required"}
+          </span>
         </div>
         <button>Calculate Repayments</button>
       </form>
 
       <section>
-        results: amount: ${data.amount} interest rate: %{data.rate} years: {data.years} categories: {data.categorie}
+        <h1>Result Monthly: {data.resultMonthy}</h1>
+        <h1>Result Total Payment: {data.resultTotal}</h1>
       </section>
     </>
-  )
+  );
 }
 
-export default function App () {
-  return (
-    <MortgageCalculator />
-  )
+export default function App() {
+  return <MortgageCalculator />;
 }

@@ -119,84 +119,101 @@ function MortgageCalculator() {
 
   return (
     <>
-      <h1 className="text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
+      <section className="max-w-[375px] m-auto flex flex-col gap-5">
+        <header>
+          <h1 className="text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
+          <button onClick={handleClickClearInptus}>Clear All</button>
+        </header>
+        
+        <main>
+          <form onSubmit={handleClickCalulate}>
+            <div>
+              <label htmlFor="amount">Mortgage Ammount</label>
+              <input type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
+            </div>
+            <span
+              className={
+                messageError.errorAmount ? "display text-red-800" : "hidden"
+              }
+            >
+              {messageError.errorAmount && "this field is required"}
+            </span>
+            <div>
+              <label htmlFor="years">Years</label>
+              <input type="number" name="years" id="years" ref={inputRefYear}/>
+              <span
+                className={
+                  messageError.errorYears ? "display text-red-800" : "hidden"
+                }
+              >
+                {messageError.errorYears && "this field is required"}
+              </span>
+            </div>
+            <div>
+              <label htmlFor="percent">Interest Rate</label>
+              <input
+                type="number"
+                name="percent"
+                id="percent"
+                ref={inputRefRate}
+                step={0.01}
+                min={0}
+                max={100}
+              />
+              <span
+                className={
+                  messageError.errorRate ? "display text-red-800" : "hidden"
+                }
+              >
+                {messageError.errorRate && "this field is required"}
+              </span>
+            </div>
+            <div>
+              <label htmlFor="repayment">Repayment</label>
+              <input
+                type="radio"
+                name="categorie"
+                id="repayment"
+                value="repayment"
+                onChange={handleChangeRepayment}
+              />
+            </div>
+            <div>
+              <label htmlFor="interest">Interest Only</label>
+              <input
+                type="radio"
+                name="categorie"
+                id="interest"
+                value="interest"
+                onChange={handleChangeInterestRate}
+              />
+              <span
+                className={
+                  messageError.errorCategorie ? "display text-red-800" : "hidden"
+                }
+              >
+                {messageError.errorCategorie && "this field is required"}
+              </span>
+            </div>
+            <button>Calculate Repayments</button>
+          </form>
 
-      <button onClick={handleClickClearInptus}>Clear All</button>
-      <form onSubmit={handleClickCalulate}>
-        <div>
-          <label htmlFor="amount">Mortgage Ammount</label>
-          <input type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
-        </div>
-        <span
-          className={
-            messageError.errorAmount ? "display text-red-800" : "hidden"
-          }
-        >
-          {messageError.errorAmount && "this field is required"}
-        </span>
-        <div>
-          <label htmlFor="years">Years</label>
-          <input type="number" name="years" id="years" ref={inputRefYear}/>
-          <span
-            className={
-              messageError.errorYears ? "display text-red-800" : "hidden"
-            }
-          >
-            {messageError.errorYears && "this field is required"}
-          </span>
-        </div>
-        <div>
-          <label htmlFor="percent">Interest Rate</label>
-          <input
-            type="number"
-            name="percent"
-            id="percent"
-            ref={inputRefRate}
-            step={0.01}
-            min={0}
-            max={100}
-          />
-          <span
-            className={
-              messageError.errorRate ? "display text-red-800" : "hidden"
-            }
-          >
-            {messageError.errorRate && "this field is required"}
-          </span>
-        </div>
-        <div>
-          <label htmlFor="repayment">Repayment</label>
-          <input
-            type="radio"
-            name="categorie"
-            id="repayment"
-            value="repayment"
-            onChange={handleChangeRepayment}
-          />
-        </div>
-        <div>
-          <label htmlFor="interest">Interest Only</label>
-          <input
-            type="radio"
-            name="categorie"
-            id="interest"
-            value="interest"
-            onChange={handleChangeInterestRate}
-          />
-          <span
-            className={
-              messageError.errorCategorie ? "display text-red-800" : "hidden"
-            }
-          >
-            {messageError.errorCategorie && "this field is required"}
-          </span>
-        </div>
-        <button>Calculate Repayments</button>
-      </form>
+          <section className="bg-[--slate-900]">
+            <h1 className="text-[--slate-100]">Your results</h1>
+            <p className="text-[--slate-300]">Your results are shown below based on the information you provided. 
+            To adjust the results, edit the form and click “calculate repayments” again.</p>
 
-      <section>
-        <h1>Result Monthly: {data.resultMonthy}</h1>
-        <h1>Result Total Payment: {data.resultTotal}</h1>
+            <h1>Your monthly repayments</h1>
+            <span>{data.resultMonthy}</span>
+            <hr />
+            <h1>Total you monthly reapyments</h1>
+            <span>{data.resultTotal}</span>
+          </section>
+        </main>
+
+        <footer>
+        Challenge by Frontend Mentor. Coded by Your Name Here.
+        </footer>
       </section>
     </>
   );

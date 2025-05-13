@@ -124,12 +124,12 @@ function MortgageCalculator() {
   return (
     <>
       <section className="h-screen flex flex-col justify-between">
-        <header>
-          <h1 className="text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
-          <button onClick={handleClickClearInptus}>Clear All</button>
+        <header className="px-[20px]">
+          <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
+          <button className="bg-transparent text-[var(--slate-500)] underline" onClick={handleClickClearInptus}>Clear All</button>
         </header>
         
-        <main>
+        <main className="px-[20px]">
           <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
         </main>
         <ResultsCalculate results={data}/>

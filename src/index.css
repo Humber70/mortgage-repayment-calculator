@@ -40,6 +40,8 @@ body {
 
 input {
   border: 1px solid black;
+  border-radius: .2rem;
+  padding: .4rem 0;
 }
 button {
   border-radius: .4rem;

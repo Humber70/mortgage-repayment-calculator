@@ -3,12 +3,12 @@ export default function FormCalculate ({data}) {
     const {handleChangeInterestRate, handleChangeRepayment, handleNumeric, handleClickCalulate, formatterValue, messageError,inputRefRate, inputRefYear} = data
 
     return (
-        <form onSubmit={handleClickCalulate}>
+        <form className="flex flex-col gap-2" onSubmit={handleClickCalulate}>
             <div>
                 <label htmlFor="amount">Mortgage Ammount</label>
                 <div className="flex items-besaline">
-                    <span className="w-[8%] border p-[.5rem] text-center border-[var(--slate-100)]">£</span>
-                    <input className="w-full border-l-[none]" type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
+                    <span className="w-[10%] border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-500]">£</span>
+                    <input className="w-full rounded-l-none border-l-0" type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
                 </div>
             </div>
             <span className={messageError.errorAmount ? "display text-red-800" : "hidden"}>{messageError.errorAmount && "this field is required"}</span>

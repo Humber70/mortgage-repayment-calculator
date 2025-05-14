@@ -13,13 +13,12 @@ export default function FormCalculate ({data}) {
             </div>
             <span className={messageError.errorAmount ? "display text-red-800" : "hidden"}>{messageError.errorAmount && "this field is required"}</span>
             <div>
-                <label htmlFor="years">Years</label>
-                <input type="number" name="years" id="years" ref={inputRefYear}/>
-                <span
-                className={
-                    messageError.errorYears ? "display text-red-800" : "hidden"
-                }
-                >
+                <label htmlFor="years">Mortgage Term</label>
+                <div className="flex items-besaline">
+                    <input className="w-full rounded-r-none border-r-0" type="number" name="years" id="years" ref={inputRefYear}/>
+                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-2 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">years</span>
+                </div>
+                <span className={messageError.errorYears ? "display text-red-800" : "hidden"}>
                 {messageError.errorYears && "this field is required"}
                 </span>
             </div>

@@ -7,7 +7,7 @@ export default function FormCalculate ({data}) {
             <div>
                 <label htmlFor="amount">Mortgage Ammount</label>
                 <div className="flex items-besaline">
-                    <span className="w-[10%] border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-500]">£</span>
+                    <span className="border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-500] px-5">£</span>
                     <input className="w-full rounded-l-none border-l-0" type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
                 </div>
             </div>
@@ -72,7 +72,10 @@ export default function FormCalculate ({data}) {
                 {messageError.errorCategorie && "this field is required"}
                 </span>
             </div>
-            <button>Calculate Repayments</button>
+            <button className="flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4">
+                <img src="/assets/icons/icon-calculator.svg" alt="icon-calculator" />
+                <span className="text-[--slate-900] font-[--font-w-700] ">Calculate Repayments</span>
+            </button>
         </form>
     )
 }

@@ -9,6 +9,7 @@
 
 :root {
   /* primary colors */
+  --light-yellow: hsl(62, 47%, 85%);
   --primary-color-lime: hsl(61, 70%, 52%);
   --primary-color-red: hsl(4, 69%, 50%);
 
@@ -38,34 +39,21 @@ body {
   font-family: var(--font-name);
 }
 
+label {
+  color: var(--slate-700);
+  font-weight: var(--font-w-500);
+}
+
 input {
-  border: 1px solid black;
   border-radius: .2rem;
   padding: .5rem 0;
   border: 1px solid var(--slate-700);
+  font-weight: var(--font-w-700);
+  color: var(--slate-900);
+  padding-left: 1rem;
 }
 button {
   border-radius: 2rem;
   background-color: #272783;
   color: white;
-}
-
-.amountVisual {
-  /* position: absolute; */
-  padding: 20px;
-  color: white;
-  z-index: 1;
-  background-color: red;
-}
-
-footer {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 50px;
-  background-color: var(--slate-900);
-  color: var(--white);
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }

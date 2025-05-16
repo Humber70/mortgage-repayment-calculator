@@ -16,7 +16,7 @@ export default function FormCalculate ({data}) {
                 <label htmlFor="years">Mortgage Term</label>
                 <div className="flex items-besaline">
                     <input className="w-full rounded-r-none border-r-0" type="number" name="years" id="years" ref={inputRefYear}/>
-                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-2 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">years</span>
+                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">years</span>
                 </div>
                 <span className={messageError.errorYears ? "display text-red-800" : "hidden"}>
                 {messageError.errorYears && "this field is required"}
@@ -24,15 +24,19 @@ export default function FormCalculate ({data}) {
             </div>
             <div>
                 <label htmlFor="percent">Interest Rate</label>
-                <input
-                type="number"
-                name="percent"
-                id="percent"
-                ref={inputRefRate}
-                step={0.01}
-                min={0}
-                max={100}
-                />
+                <div className="flex">
+                    <input
+                    className="w-full rounded-r-none border-r-0"
+                    type="number"
+                    name="percent"
+                    id="percent"
+                    ref={inputRefRate}
+                    step={0.01}
+                    min={0}
+                    max={100}
+                    />
+                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">%</span>
+                </div>
                 <span
                 className={
                     messageError.errorRate ? "display text-red-800" : "hidden"

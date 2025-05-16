@@ -130,9 +130,12 @@ function MortgageCalculator() {
         </header>
         
         <main className="px-[20px]">
-          <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
+          <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, categorie, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
         </main>
-        <ResultsCalculate results={data}/>
+        
+        <footer>
+          <ResultsCalculate results={data}/>
+        </footer>
       </section>
     </>
   );

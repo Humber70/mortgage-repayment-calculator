@@ -1,6 +1,6 @@
 export default function FormCalculate ({data}) {
 
-    const {handleChangeInterestRate, handleChangeRepayment, handleNumeric, handleClickCalulate, formatterValue, messageError,inputRefRate, inputRefYear} = data
+    const {handleChangeInterestRate, handleChangeRepayment, handleNumeric, handleClickCalulate, formatterValue, messageError,inputRefRate, inputRefYear, categorie} = data
 
     return (
         <form className="flex flex-col gap-2" onSubmit={handleClickCalulate}>
@@ -45,32 +45,53 @@ export default function FormCalculate ({data}) {
                 {messageError.errorRate && "this field is required"}
                 </span>
             </div>
-            <div>
-                <label htmlFor="repayment">Repayment</label>
-                <input
-                type="radio"
-                name="categorie"
-                id="repayment"
-                value="repayment"
-                onChange={handleChangeRepayment}
-                />
-            </div>
-            <div>
-                <label htmlFor="interest">Interest Only</label>
-                <input
-                type="radio"
-                name="categorie"
-                id="interest"
-                value="interest"
-                onChange={handleChangeInterestRate}
-                />
-                <span
-                className={
-                    messageError.errorCategorie ? "display text-red-800" : "hidden"
-                }
-                >
-                {messageError.errorCategorie && "this field is required"}
-                </span>
+
+            <div className="flex flex-col gap-3">
+                <label htmlFor="repayment">Mortagage Type</label>
+                <div>
+                    <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
+
+                    <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)]'}`}>
+                    </div>
+
+                    <input
+                    className="sr-only"
+                    type="radio"
+                    name="categorie"
+                    id="repayment"
+                    value="repayment"
+                    onChange={handleChangeRepayment}
+                    />
+                    Repayment
+                    </label>
+                </div>
+                <div>
+                    <div>
+                        <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'interest' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="interest">
+
+
+                            <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)]'}`}>
+                            </div>
+
+                            <input
+                            className="sr-only"
+                            type="radio"
+                            name="categorie"
+                            id="interest"
+                            value="interest"
+                            onChange={handleChangeInterestRate}
+                            />
+                            Interest Only
+                        </label>
+                    </div>
+                    <span
+                    className={
+                        messageError.errorCategorie ? "display text-red-800" : "hidden"
+                    }
+                    >
+                    {messageError.errorCategorie && "this field is required"}
+                    </span>
+                </div>
             </div>
             <button className="flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4">
                 <img src="/assets/icons/icon-calculator.svg" alt="icon-calculator" />

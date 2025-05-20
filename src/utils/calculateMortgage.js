@@ -20,10 +20,7 @@ export const calculateMortgage = () => {
 
       const resultMonthyPayments = MonthlyPayments;
       const totalPayment = resultMonthyPayments * numbersOfPayments;
-      console.log({
-        a: Number(resultMonthyPayments.toFixed(2)).toLocaleString(),
-        b: Number(totalPayment.toFixed(2)).toLocaleString(),
-      });
+     
       return {
         resultMonthyPayments,
         totalPayment,
@@ -31,7 +28,6 @@ export const calculateMortgage = () => {
     },
 
     calculateInterestOnly: function (ammount, interestRate, years) {
-        console.log(typeof interestRate);
         
       if (interestRate === 0) {
         return {
@@ -44,9 +40,7 @@ export const calculateMortgage = () => {
       const numbersOfPayments = years * 12;
 
       const quoteMonthlyOnlyInterest = ammount * interestMonthly;
-      const totalQuoteMonthlyOnlyInterest =
-        quoteMonthlyOnlyInterest * numbersOfPayments;
-      console.log({ quoteMonthlyOnlyInterest, totalQuoteMonthlyOnlyInterest });
+      const totalQuoteMonthlyOnlyInterest = quoteMonthlyOnlyInterest * numbersOfPayments;
       return {
         resultMonthyPayments: quoteMonthlyOnlyInterest,
         totalPayment: totalQuoteMonthlyOnlyInterest,

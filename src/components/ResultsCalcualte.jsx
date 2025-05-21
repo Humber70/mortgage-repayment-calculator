@@ -7,15 +7,15 @@ export default function ResultsCalculate ({results}) {
                 To adjust the results, edit the form and click “calculate repayments” again.</p>
             </div>
 
-            <div className="bg-[--slate-1000] border-t rounded border-[--primary-color-lime] border-t-4 p-2">
+            <div className="bg-[--slate-1000] border-t rounded border-[--primary-color-lime] border-t-4 py-3 px-4">
                 <div>
                 <h1 className="text-[--slate-300]">Your monthly repayments</h1>
-                <span className="text-[--primary-color-lime] text-3xl font-[var(--font-w-700)]">{results.resultMonthy}</span>
+                <p className="py-1 text-[--primary-color-lime] text-[2rem] font-[var(--font-w-700)]">£{results.resultMonthy}</p>
                 </div>
-                <hr className="my-5 border-t border-[--slate-700] border-[1px]"/>
+                <hr className="my-2 border-t border-[--slate-700] border-[1px]"/>
                 <div>
-                <h1 className="text-[--slate-300]">Total you monthly reapyments</h1>
-                <span className="text-[1.4rem] text-[--white] font-[var(--font-w-700)]">{results.resultTotal}</span>
+                <h1 className="py-2 text-[--slate-300]">Total you monthly reapyments</h1>
+                <p className="text-[1.3rem] text-[--white] font-[var(--font-w-700)]">£{results.resultTotal}</p>
                 </div>
             </div>
         </section>

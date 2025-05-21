@@ -52,6 +52,11 @@ input {
   color: var(--slate-900);
   padding-left: 1rem;
 }
+
+.inputError {
+  border: 1px solid var(--primary-color-red);
+}
+
 button {
   border-radius: 2rem;
   background-color: #272783;

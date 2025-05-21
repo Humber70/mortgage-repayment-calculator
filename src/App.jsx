@@ -57,6 +57,7 @@ function MortgageCalculator() {
     // reset form field values
     setFormatterValue("")
     setValue("")
+    setCategorie("")
     if(inputRefRate.current || inputRefYear.current) {
       inputRefRate.current.value = ''
       inputRefYear.current.value = ''
@@ -81,6 +82,7 @@ function MortgageCalculator() {
       amount: value,
       years: Number(field.get("years")),
       rate: Number(field.get("percent")),
+      categorie: categorie
     };
 
     // validation

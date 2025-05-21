@@ -7,7 +7,7 @@ export default function FormCalculate ({data}) {
             <div>
                 <label htmlFor="amount">Mortgage Ammount</label>
                 <div className="flex items-besaline">
-                    <span className="border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-500] px-5">£</span>
+                    <span className="border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-700] px-5">£</span>
                     <input className="w-full rounded-l-none border-l-0" type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
                 </div>
             </div>
@@ -16,7 +16,7 @@ export default function FormCalculate ({data}) {
                 <label htmlFor="years">Mortgage Term</label>
                 <div className="flex items-besaline">
                     <input className="w-full rounded-r-none border-r-0" type="number" name="years" id="years" ref={inputRefYear}/>
-                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">years</span>
+                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-700] bg-[--slate-100]">years</span>
                 </div>
                 <span className={messageError.errorYears ? "display text-red-800" : "hidden"}>
                 {messageError.errorYears && "this field is required"}
@@ -35,7 +35,7 @@ export default function FormCalculate ({data}) {
                     min={0}
                     max={100}
                     />
-                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-500] bg-[--slate-100]">%</span>
+                    <span className="rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-700] bg-[--slate-100]">%</span>
                 </div>
                 <span
                 className={
@@ -51,7 +51,7 @@ export default function FormCalculate ({data}) {
                 <div>
                     <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
 
-                    <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)]'}`}>
+                    <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
                     </div>
 
                     <input
@@ -70,7 +70,7 @@ export default function FormCalculate ({data}) {
                         <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'interest' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="interest">
 
 
-                            <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)]'}`}>
+                            <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
                             </div>
 
                             <input

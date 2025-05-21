@@ -123,7 +123,7 @@ function MortgageCalculator() {
 
   return (
     <>
-      <section className="h-screen flex flex-col justify-between">
+      <section className="h-screen flex flex-col justify-between gap-6">
         <header className="px-[20px]">
           <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
           <button className="bg-transparent text-[var(--slate-500)] underline" onClick={handleClickClearInptus}>Clear All</button>

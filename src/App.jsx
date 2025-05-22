@@ -125,19 +125,24 @@ function MortgageCalculator() {
 
   return (
     <>
-      <section className="h-screen flex flex-col justify-between gap-6">
-        <header className="px-[20px]">
-          <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
-          <button className="bg-transparent text-[var(--slate-500)] underline" onClick={handleClickClearInptus}>Clear All</button>
-        </header>
+      <section className="h-screen flex flex-col lg:justify-center">
         
-        <main className="px-[20px]">
-          <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, categorie, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
+        <main className="px-[20px] lg:flex lg:items-center">
+          <section className="w-full flex flex-col">
+            <header className="lg:flex lg:flex-row lg:item-center w-full lg:justify-between">
+              <div>
+                <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
+              </div>
+              <button className="bg-transparent text-[var(--slate-500)] underline" onClick={handleClickClearInptus}>Clear All</button>  
+            </header>
+            
+            <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, categorie, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
+          </section>
+          
+          <section className="lg:h-full">
+            {messageError ? <IllustrationEmpty /> : <ResultsCalculate results={data}/>}
+          </section>
         </main>
-        
-        <footer>
-          {messageError ? <IllustrationEmpty /> : <ResultsCalculate results={data}/>}
-        </footer>
       </section>
     </>
   );

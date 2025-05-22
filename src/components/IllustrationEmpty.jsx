@@ -1,6 +1,6 @@
 export default function IllustrationEmpty () {
   return (
-    <section className="flex flex-col justify-center items-center bg-[--slate-900] p-[1.5rem] lg:h-full">
+    <section className="w-full flex flex-col justify-center items-center">
       <div>
         <img src="/assets/images/illustration-empty.svg" alt="image-empty" />
       </div>

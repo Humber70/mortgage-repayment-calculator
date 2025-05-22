@@ -1,6 +1,6 @@
 export default function ResultsCalculate ({results}) {
     return (
-        <section className="bg-[--slate-900] w-[100%] p-5 self-besaline">
+        <section className="w-full lg:h-full">
             <div>
                 <h1 className="text-[--slate-100] text-[1.2rem] font-[var(--font-w-500)]">Your results</h1>
                 <p className="text-[--slate-300] pb-6 pt-3 font-[var(--font-500)]">Your results are shown below based on the information you provided. 

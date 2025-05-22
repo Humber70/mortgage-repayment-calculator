@@ -125,10 +125,10 @@ function MortgageCalculator() {
 
   return (
     <>
-      <section className="h-screen flex flex-col lg:justify-center">
+      <section className="h-screen flex flex-col lg:justify-center lg:max-w-[1024px] lg:mx-auto">
         
-        <main className="px-[20px] lg:flex lg:items-center">
-          <section className="w-full flex flex-col">
+        <main className="lg:flex lg:items-center lg:gap-4">
+          <section className="px-[20px] w-full flex flex-col">
             <header className="lg:flex lg:flex-row lg:item-center w-full lg:justify-between">
               <div>
                 <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
@@ -139,7 +139,7 @@ function MortgageCalculator() {
             <FormCalculate data={{formatterValue, messageError, inputRefRate, inputRefYear, categorie, handleChangeRepayment, handleChangeInterestRate, handleNumeric, handleClickCalulate}}/>
           </section>
           
-          <section className="lg:h-full">
+          <section className="bg-[--slate-900] p-[1rem] lg:h-full lg:rounded-r-lg lg:rounded-bl-[5rem] flex items-center">
             {messageError ? <IllustrationEmpty /> : <ResultsCalculate results={data}/>}
           </section>
         </main>

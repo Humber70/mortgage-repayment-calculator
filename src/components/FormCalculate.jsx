@@ -6,48 +6,51 @@ export default function FormCalculate ({data}) {
         <form className="flex flex-col gap-2" onSubmit={handleClickCalulate}>
             <div>
                 <label htmlFor="amount">Mortgage Ammount</label>
-                <div className="flex items-besaline">
-                    <span className={`border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-700] px-5 ${messageError.errorAmount && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>£</span>
+                <div className="flex">
+                    <span className={`border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-700] px-5 flex justify-center items-center text-[1.2rem] ${messageError.errorAmount && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>£</span>
                     <input className={`w-full rounded-l-none border-l-0 ${messageError.errorAmount && 'inputError'}`} type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
                 </div>
             </div>
             <span className={messageError.errorAmount ? "display text-red-800" : "hidden"}>{messageError.errorAmount && "This field is required"}</span>
-            <div>
-                <label htmlFor="years">Mortgage Term</label>
-                <div className="flex items-besaline">
-                    <input className={`w-full rounded-r-none border-r-0 ${messageError.errorYears && 'inputError'}`} type="number" name="years" id="years" ref={inputRefYear}/>
-                    <span className={`rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-700] bg-[--slate-100] ${messageError.errorYears && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>years</span>
+
+            <div className="lg:flex lg:gap-4">
+                <div className="lg:w-full">
+                    <label htmlFor="years">Mortgage Term</label>
+                    <div className="flex">
+                        <input className={`w-full rounded-r-none border-r-0 ${messageError.errorYears && 'inputError'}`} type="number" name="years" id="years" ref={inputRefYear}/>
+                        <span className={`rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-700] bg-[--slate-100] text-[1.2rem] ${messageError.errorYears && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>years</span>
+                    </div>
+                    <span className={messageError.errorYears ? "display text-red-800" : "hidden"}>
+                    {messageError.errorYears && "this field is required"}
+                    </span>
                 </div>
-                <span className={messageError.errorYears ? "display text-red-800" : "hidden"}>
-                {messageError.errorYears && "this field is required"}
-                </span>
-            </div>
-            <div>
-                <label htmlFor="percent">Interest Rate</label>
-                <div className="flex">
-                    <input
-                    className={`w-full rounded-r-none border-r-0 ${messageError.errorRate && 'inputError'}`}
-                    type="number"
-                    name="percent"
-                    id="percent"
-                    ref={inputRefRate}
-                    step={0.01}
-                    min={0}
-                    max={100}
-                    />
-                    <span className={`rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[--slate-700] bg-[--slate-100] ${messageError.errorRate && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>%</span>
+                <div className="lg:w-full">
+                    <label htmlFor="percent">Interest Rate</label>
+                    <div className="flex">
+                        <input
+                        className={`w-full rounded-r-none border-r-0 ${messageError.errorRate && 'inputError'}`}
+                        type="number"
+                        name="percent"
+                        id="percent"
+                        ref={inputRefRate}
+                        step={0.01}
+                        min={0}
+                        max={100}
+                        />
+                        <span className={`rounded rounded-l-none border border-l-0 border-[--slate-700] flex justify-center flex-col px-5 font-[--font-w-700] text-[1.2rem] text-[--slate-700] bg-[--slate-100] ${messageError.errorRate && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>%</span>
+                    </div>
+                    <span
+                    className={
+                        messageError.errorRate ? "display text-red-800" : "hidden"
+                    }
+                    >
+                    {messageError.errorRate && "This field is required"}
+                    </span>
                 </div>
-                <span
-                className={
-                    messageError.errorRate ? "display text-red-800" : "hidden"
-                }
-                >
-                {messageError.errorRate && "This field is required"}
-                </span>
             </div>
 
             <div className="flex flex-col gap-3">
-                <label htmlFor="repayment">Mortagage Type</label>
+                <label className="p-0" htmlFor="repayment">Mortagage Type</label>
                 <div>
                     <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
 
@@ -93,7 +96,7 @@ export default function FormCalculate ({data}) {
                     </span>
                 </div>
             </div>
-            <button className="flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4">
+            <button className="my-7 flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4">
                 <img src="/assets/icons/icon-calculator.svg" alt="icon-calculator" />
                 <span className="text-[--slate-900] font-[--font-w-700] ">Calculate Repayments</span>
             </button>

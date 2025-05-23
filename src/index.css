@@ -35,18 +35,20 @@
 }
 
 body {
-  background-color: var(--white);
+  background-color: var(--slate-100);
   font-family: var(--font-name);
 }
 
 label {
+  padding: .7rem 0;
+  display: inline-block;
   color: var(--slate-700);
   font-weight: var(--font-w-500);
 }
 
 input {
   border-radius: .2rem;
-  padding: .5rem 0;
+  padding: .8rem 0;
   border: 1px solid var(--slate-700);
   font-weight: var(--font-w-700);
   color: var(--slate-900);

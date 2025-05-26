@@ -1,4 +1,20 @@
+import { useRef } from "react"
+
 export default function FormCalculate ({data}) {
+
+    const brotherRef = useRef(false)
+    
+    const handleOnFocus = () => {
+        if(brotherRef.current) {
+            brotherRef.current.classList.add('active')
+        }
+    }
+    const handleOnBlur = () => {
+        if(brotherRef.current) {
+            brotherRef.current.classList.remove('active')
+        }
+    }
+
 
     const {handleChangeInterestRate, handleChangeRepayment, handleNumeric, handleClickCalulate, formatterValue, messageError,inputRefRate, inputRefYear, categorie} = data
 
@@ -7,8 +23,8 @@ export default function FormCalculate ({data}) {
             <div>
                 <label htmlFor="amount">Mortgage Ammount</label>
                 <div className="flex">
-                    <span className={`border p-[.5rem] text-center border-[var(--slate-700)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-700] px-5 flex justify-center items-center text-[1.2rem] ${messageError.errorAmount && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>£</span>
-                    <input className={`w-full rounded-l-none border-l-0 text-xl ${messageError.errorAmount && 'inputError'}`} type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
+                    <span ref={brotherRef} className={`focus:bg-[yellow] border p-[.5rem] text-center border-[var(--slate-500)] rounded border-r-0 rounded-l-2 rounded-r-none bg-[--slate-100] font-[--font-w-700] text-[--slate-700] px-5 flex justify-center items-center text-[1.2rem] ${messageError.errorAmount && 'bg-[var(--primary-color-red)] text-[var(--white)] inputError'}`}>£</span>
+                    <input className={`w-full rounded-l-none border-l-0 text-xl ${messageError.errorAmount && 'inputError'}`} onFocus={handleOnFocus} onBlur={handleOnBlur} type="text" name="amount" id="amount" onChange={handleNumeric} value={formatterValue}/>
                 </div>
             </div>
             <span className={messageError.errorAmount ? "display text-red-800" : "hidden"}>{messageError.errorAmount && "This field is required"}</span>
@@ -52,7 +68,7 @@ export default function FormCalculate ({data}) {
             <div className="flex flex-col gap-3">
                 <label className="p-0" htmlFor="repayment">Mortagage Type</label>
                 <div>
-                    <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
+                    <label className={`flex items-center w-full border border-[--slate-500] hover:border-[var(--primary-color-lime)] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
 
                     <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
                     </div>
@@ -70,7 +86,7 @@ export default function FormCalculate ({data}) {
                 </div>
                 <div>
                     <div>
-                        <label className={`flex items-center w-full border border-[--slate-700] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'interest' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="interest">
+                        <label className={`flex items-center w-full border border-[--slate-500] hover:border-[var(--primary-color-lime)] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'interest' && 'bg-[var(--light-yellow)] border-[var(--primary-color-lime)]'}`} htmlFor="interest">
 
 
                             <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>

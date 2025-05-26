@@ -44,15 +44,28 @@ label {
   display: inline-block;
   color: var(--slate-700);
   font-weight: var(--font-w-500);
+
+  span.active {
+    background-color: red;
+  }
+}
+
+.active {
+  border-color: var(--primary-color-lime);
+  background-color: var(--primary-color-lime);
 }
 
 input {
   border-radius: .2rem;
   padding: .8rem 0;
-  border: 1px solid var(--slate-700);
+  border: 1px solid var(--slate-500);
   font-weight: var(--font-w-700);
   color: var(--slate-900);
   padding-left: 1rem;
+
+  &:hover {
+    border-color: var(--slate-700);
+  }
 }
 
 .inputError {
@@ -63,4 +76,8 @@ button {
   border-radius: 2rem;
   background-color: #272783;
   color: white;
+
+  &:hover {
+    background-color: rgb(245, 245, 134);
+  }
 }

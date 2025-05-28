@@ -62,6 +62,7 @@ input {
   font-weight: var(--font-w-700);
   color: var(--slate-900);
   padding-left: 1rem;
+  outline: none;
 
   &:hover {
     border-color: var(--slate-700);
@@ -70,14 +71,4 @@ input {
 
 .inputError {
   border: 1px solid var(--primary-color-red);
-}
-
-button {
-  border-radius: 2rem;
-  background-color: #272783;
-  color: white;
-
-  &:hover {
-    background-color: rgb(245, 245, 134);
-  }
 }

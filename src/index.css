@@ -50,10 +50,6 @@ label {
   }
 }
 
-.active {
-  border-color: var(--primary-color-lime);
-  background-color: var(--primary-color-lime);
-}
 
 input {
   border-radius: .2rem;
@@ -67,6 +63,11 @@ input {
   &:hover {
     border-color: var(--slate-700);
   }
+}
+
+input:focus + span {
+  border-color: var(--primary-color-lime);
+  background-color: var(--primary-color-lime);
 }
 
 .inputError {

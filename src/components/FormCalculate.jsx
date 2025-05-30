@@ -56,8 +56,8 @@ export default function FormCalculate ({data}) {
                 <div>
                     <label className={`flex items-center w-full border border-[--slate-500] hover:border-[var(--primary-color-lime)] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'repayment' && 'bg-[--light-yellow] border-[var(--primary-color-lime)]'}`} htmlFor="repayment">
 
-                    <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
-                    </div>
+                    <span className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
+                    </span>
 
                     <input
                     className="sr-only"
@@ -75,8 +75,8 @@ export default function FormCalculate ({data}) {
                         <label className={`flex items-center w-full border border-[--slate-500] hover:border-[var(--primary-color-lime)] rounded p-4 cursor-pointer font-[--font-w-700] text-[var(--slate-900)] ${categorie === 'interest' && 'bg-[var(--light-yellow)] border-[var(--primary-color-lime)]'}`} htmlFor="interest">
 
 
-                            <div className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
-                            </div>
+                            <span className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
+                            </span>
 
                             <input
                             className="sr-only"

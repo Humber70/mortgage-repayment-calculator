@@ -98,7 +98,7 @@ export default function FormCalculate ({data}) {
                     </span>
                 </div>
             </div>
-            <button className="my-7 flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4 rounded-3xl hover:bg-[#f5f586]">
+            <button type="submit" className="my-7 flex justify-center gap-5 items-center bg-[--primary-color-lime] my-2 py-4 rounded-3xl hover:bg-[#f5f586]">
                 <img src="/assets/icons/icon-calculator.svg" alt="icon-calculator" />
                 <span className="text-[--slate-900] font-[--font-w-700] ">Calculate Repayments</span>
             </button>

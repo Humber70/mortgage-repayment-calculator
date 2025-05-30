@@ -59,6 +59,8 @@ export default function FormCalculate ({data}) {
                     <span className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'repayment' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
                     </span>
 
+                    Repayment
+                    </label>
                     <input
                     className="sr-only"
                     type="radio"
@@ -67,8 +69,6 @@ export default function FormCalculate ({data}) {
                     value="repayment"
                     onChange={handleChangeRepayment}
                     />
-                    Repayment
-                    </label>
                 </div>
                 <div>
                     <div>
@@ -78,6 +78,8 @@ export default function FormCalculate ({data}) {
                             <span className={`w-[1rem] h-[1rem] rounded-[50%] outline outline-offset outline-1 bg-[transparent] border border-2 border-[white] mr-4 ${categorie === 'interest' && 'bg-[var(--primary-color-lime)] outline-[var(--primary-color-lime)] outline-2'}`}>
                             </span>
 
+                            Interest Only
+                        </label>
                             <input
                             className="sr-only"
                             type="radio"
@@ -86,8 +88,6 @@ export default function FormCalculate ({data}) {
                             value="interest"
                             onChange={handleChangeInterestRate}
                             />
-                            Interest Only
-                        </label>
                     </div>
                     <span
                     className={

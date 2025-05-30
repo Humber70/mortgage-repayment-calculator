@@ -24,7 +24,7 @@
 
   /* Typography */
   --font-name: 'Plus Jakarta Sans';
-  --font-body-size: 1rem;
+  --font-body-size: 16px;
   
   --font-w-500: 500;
   --font-w-700: 700;
@@ -37,6 +37,7 @@
 body {
   background-color: var(--slate-100);
   font-family: var(--font-name);
+  font-size: var(--font-body-size);
 }
 
 label {

@@ -6,7 +6,7 @@ export default function IllustrationEmpty () {
       </div>
       <div>
         <h2 className="font-[--font-w-700] text-2xl text-[white] text-center">Results shown here</h2>
-        <p className="py-3 text-center text-[var(--slate-500)]">{'Complete the form and click "calculate repayments" to see what your repayments would be.'}</p>
+        <p className="py-[.75rem] text-center text-[var(--slate-500)]">{'Complete the form and click "calculate repayments" to see what your repayments would be.'}</p>
       </div>
     </section>
   )

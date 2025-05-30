@@ -125,11 +125,11 @@ function MortgageCalculator() {
 
   return (
     <>
-      <section className="h-screen flex flex-col lg:justify-center items-center lg:max-w-[1024px] lg:mx-auto">
+      <section className="h-screen flex flex-col lg:justify-center items-center lg:max-w-[64rem] lg:mx-auto">
         
         <main className="lg:flex lg:items-center lg:gap-4 bg-[var(--white)] lg:rounded-l-lg lg:shadow-lg lg:shadow-gray-500/30">
-          <section className="px-[20px] flex flex-col lg:w-[50%]">
-            <header className="my-7 lg:flex lg:flex-row lg:items-center w-full lg:justify-between">
+          <section className="px-[1.25rem] flex flex-col lg:w-[50%]">
+            <header className="my-[1.75rem] lg:flex lg:flex-row lg:items-center w-fuldl lg:justify-between">
               <div>
                 <h1 className="text-[1.5rem] text-[var(--slate-900)] font-[var(--font-w-700)]">Mortgage Calculator</h1>
               </div>
